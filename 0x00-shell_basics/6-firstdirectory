@@ -1,2 +1,3 @@
 #!/bin/bash
-/tmp mrdir holberton
+mkdir /tmp/holberton
+
