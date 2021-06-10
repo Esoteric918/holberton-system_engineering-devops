@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -a . /.. _.html
+cp -R . /.html /..
