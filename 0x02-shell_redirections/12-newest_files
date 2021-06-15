@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lt | less 
+ls -lt | head 
