@@ -1,0 +1,1 @@
+Creating alises in bash 
