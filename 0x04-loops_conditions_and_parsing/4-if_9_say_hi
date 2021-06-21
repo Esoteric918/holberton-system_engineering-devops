@@ -3,11 +3,10 @@
 i=0
 while [ $i -lt 10 ]
 do
+    echo "Holberton School"
 ((i++))
 if [[ "$i" == 9 ]]; then
-continue
+echo "Hi"    
 fi
-echo "Holberton School"
 done
-echo "Hi"
-echo "Holberton School"
+
