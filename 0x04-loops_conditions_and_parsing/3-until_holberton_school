@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#making a loop with until
 i=1
 until [ $i -gt 10 ]
 do
