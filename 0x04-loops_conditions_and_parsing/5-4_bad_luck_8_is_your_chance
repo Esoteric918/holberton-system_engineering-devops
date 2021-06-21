@@ -7,9 +7,9 @@ do
    
     if [[ "$i" == 4 ]]; then
        
-	echo "bad Luck" 
+	echo "bad luck" 
 	elif [[ "$i" == 8 ]]; then
-	echo "good Luck"
+	echo "good luck"
     else
 	echo "Holberton School"
     fi
