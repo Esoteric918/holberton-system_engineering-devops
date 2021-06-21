@@ -9,8 +9,7 @@ do
     ((i++))
     while [ $n -le 59 ]
     do
-    
-	echo "$n"
-	((++n))
+    echo "$n"
+	((n++))
     done
     done
