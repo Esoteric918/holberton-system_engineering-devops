@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #using while command to list holberton school 10 time
 n=0
-while [ $n -le 10 ]
+while [ $n -lt 10 ]
 do
     echo "Holberton School"
     n=$((n+1))
