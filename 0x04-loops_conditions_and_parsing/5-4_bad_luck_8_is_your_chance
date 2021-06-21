@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# making while loop with if elif and else
 i=1
 
 while [ $i -le 10 ] 
