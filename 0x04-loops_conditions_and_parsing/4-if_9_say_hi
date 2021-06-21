@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#using if statement in while loop
+i=0
+while [ $i -lt 10 ]
+do
+((i++))
+if [[ "$i" == 9 ]]; then
+continue
+fi
+echo "Holberton School"
+done
+echo "Hi"
+echo "Holberton School"
