@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#making a for loop that showes file name
 for file in /home/user/*; do
   echo "${file##/*}"
   done
