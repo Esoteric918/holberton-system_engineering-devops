@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 #looping file names with while and if statements
-if [ -e holbertonschool ]
+FILE="holbertonschool"
+if [[ -e $FILE ]]
 then
-    echo "holbertonschool file exists"
-    if [ -s holbertonschool ]
+    echo "$FILE file exists"
+    if [[ -s $FILE ]]
     then
-	echo "holbertonschool file is not empty"
+	echo "$FILE file is not empty"
    else
-	echo "holbertonschool file is empty"
-   fi
-    if [ -f holbertonschool ]
+	echo "$FILE file is empty"
+    fi
+    
+    if [[ -f $FILE ]]
     then
-	echo "holbertonschool is a regular file"
+	echo "$FILE is a regular file"
     fi
 else
-    echo "holbertonschool does not exist"
+    echo "$FILE does not exist"
 fi     
