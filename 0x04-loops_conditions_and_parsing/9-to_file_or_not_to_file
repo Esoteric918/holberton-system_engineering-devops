@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #looping file names with while and if statements
 FILE=holbertonschool
-if [ -a $FILE ]; then
+if [ -e $FILE ]; then
     echo "$FILE file exists"
     if [ -s $FILE ]; then
 	echo "$FILE file is not empty"
