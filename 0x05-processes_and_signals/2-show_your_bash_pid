@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #show bash pid in tree
-ps auxf --forest
+# shellcheck disable=SC2009
+ps auxf | grep bash
