@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#looping file nameswith while and if statements
+FILE=holbertschool
+if test -a $FILE; then
+    echo "$FILE file exists"
+    if test -s $FILE; then
+	echo "$FILE file is empty"
+    else
+	echo "$FILE file is not empty"
+   fi
+    if test -f $FILE; then
+	echo "$FILE is a regular file"
+    fi
+else echo "$FILE does not exist"
+fi     
