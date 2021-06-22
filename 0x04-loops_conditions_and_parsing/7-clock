@@ -6,10 +6,12 @@ while [ $i -le 12 ]
 do
     
     echo "$i"
-    ((i++))
+    
     while [ $n -le 59 ]
     do
-    echo "$n"
+	echo "$n"
 	((n++))
+	
     done
+   ((i++)) 
     done
