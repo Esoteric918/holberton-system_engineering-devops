@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #looping file nameswith while and if statements
-FILE=holbertschool
+FILE=holbertonschool
 if [ -a $FILE ]; then
     echo "$FILE file exists"
     if [ -s $FILE ]; then
