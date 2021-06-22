@@ -5,14 +5,14 @@ while [ $i -le 99 ]
 do
     if ! (( i % 5 )) && ! (( i % 3 ))
     then
-	echo "Fizzbuzz"
+	echo "FizzBuzz"
     elif ! (( i % 3 ))
 	 then
 	echo "Fizz"
 	
      elif ! (( i % 5 ))
 	then
-	    echo "buzz"
+	    echo "Buzz"
      else
 	    echo "$i"
        
