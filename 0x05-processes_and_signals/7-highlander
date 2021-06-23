@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #highlander there can only be ONE
-trap "I am invincible!!!" SIGTERM
+trap  "echo I am invincible!!!" SIGTERM
 while true;
 do
     echo "To infinity and beyond"
