@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # the beheaded process
-kill -9 "$(7-highlander)"
+kill -9 "$(grep -f 7-highlander)"
