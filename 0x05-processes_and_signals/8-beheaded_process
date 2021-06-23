@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# the beheaded process
+kill -f "$(7-highlander)"
