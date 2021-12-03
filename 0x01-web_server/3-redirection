@@ -5,6 +5,6 @@ sudo apt-get -y  install nginx
 echo 'Hello World' | sudo tee /var/www/html/index.html
 sudo ufw allow nginx
 sudo service nginx start
-REDIC="\\\locatoin /redirect_me {\n\t\ return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4,\n\t}"
+REDIC="\\\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
 SRC="/etc/nginx/sites-available/default"
 sudo -ie sed "$REDIC" $SRC
