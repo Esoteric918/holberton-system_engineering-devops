@@ -6,7 +6,7 @@ sudo service nginx start
 HDR="\\n\tadd_header X-Served-By \$HOSTNAME; always\n"
 echo 'Hello World' | sudo tee /var/www/html/index.html
 sudo ufw allow nginx
-SRC="\tlocation / {"}
+SRC="\tlocation / {"
 REDIC="\\\$HDR;\n\n\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n\n\tlocation / {"
 sudo sed -i "s@^$SRC@$REDIC@" /etc/nginx/sites-available/default
 sudo service nginx restart
