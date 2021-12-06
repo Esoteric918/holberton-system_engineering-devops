@@ -3,12 +3,15 @@
 
 
 sudo apt-get -y update
+sudo apt-get -y upgrade
 sudo apt-get -y  install nginx
+sudo service nginx start
 echo 'Hello World' | sudo tee /var/www/html/index.html
-sudo ufw allow nginx
+
 REDIC="\\\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
+
 SRC="/etc/nginx/sites-available/default"
 FILE=/etc/nginx/sites-available/default
-sudo sed -ie "\\\tadd_header X-Served-By \$HOSTNAME;" $FILE
-sudo -ie sed "$REDIC" $SRC
+sudo sed -i "\tadd_header X-Served-By \$HOSTNAME;"  $FILE@$REDIC
+sudo -i sed "$REDIC@$SRC@" $FILE
 sudo service nginx restart
