@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
 # Custome header X-Served-By
-
-
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y  install nginx
-sudo service nginx start
-echo 'Hello World' | sudo tee /var/www/html/index.html
-
-REDIC="\\\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
-
-SRC="/etc/nginx/sites-available/default"
+sudo apt-get update
+sudo apt-get -y install nginx
 FILE=/etc/nginx/sites-available/default
-sudo sed -i "\tadd_header X-Served-By \$HOSTNAME;"  $FILE@$REDIC
-sudo -i sed "$REDIC@$SRC@" $FILE
+sudo sed -i "\\\tadd_header X-Served-By \$hostname;" $FILE
 sudo service nginx restart
