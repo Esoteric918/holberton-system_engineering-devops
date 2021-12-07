@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# comment goes here
+# install HAproxy
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install haproxy
 
-FILE= /etc/haproxy/haproxy.cfg
-STR= "listen appname :80\n\tmode http\n\tbalance roundrobin\n\tserver gc-3411-web-01 ubuntu@35.231.120.54:80 check\n\tserver gc-3411-web-02 ubuntu@34.139.69.101:80 check"
-sudo echo -e STR | sudo tee -a $FILE
+
+STR= "\nfrontend http\n\tbind *:80 mode http\n\tstats uri /haproxy?stats\n\tdefault_backend custom_backend\n\nbackend custom_backend\tbalance roundrobin\n\tserver gc-3411-web-01 35.231.120.54:80 check\n\tserver gc-3411-web-02 34.139.69.101:80 check"
+
+sudo echo -e $STR | sudo tee -a /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
