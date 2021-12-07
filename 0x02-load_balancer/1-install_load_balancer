@@ -8,7 +8,7 @@ sudo sed -ie "s/ENABLED=0/ENABLED=1"/ /etc/default/haproxy
 STR= "listen appname :80
 mode http
 balance roundrobin
-server 3411-web-01 ubuntu@35.231.120.54:80 check
-server 3411-web-02 ubuntu@34.139.69.101:80 check"
+server gc-3411-web-01 ubuntu@35.231.120.54:80 check
+server gc-3411-web-02 ubuntu@34.139.69.101:80 check"
 sudo echo -e STR | sudo tee -a $FILE
 sudo service haproxy restart
