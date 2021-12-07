@@ -1,6 +1,6 @@
 host esoteric
-    HostName 35.231.120.54
+    HostName 35.229.33.83
     User ubuntu
     PasswordAuthentication no
-     StrictHostKeyChecking No
+    StrictHostKeyChecking No
     IdentifyFile ~/.ssh/school
