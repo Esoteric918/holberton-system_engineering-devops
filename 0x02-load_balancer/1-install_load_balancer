@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 # comment goes here
-sudo add-apt-repository -y ppa:vbernat/haproxy-1.8
+
 sudo apt-get -y update
-sudo apt-get -y install haproxy=1.8.\*
+sudo apt-get -y upgrade
+sudo apt-get -y install haproxy
+
 FILE= /etc/haproxy/haproxy.cfg
-sudo sed -ie "s/ENABLED=0/ENABLED=1"/ /etc/default/haproxy
-STR= "listen appname :80
-mode http
-balance roundrobin
-server gc-3411-web-01 ubuntu@35.231.120.54:80 check
-server gc-3411-web-02 ubuntu@34.139.69.101:80 check"
+STR= "listen appname :80\n\tmode http\n\tbalance roundrobin\n\tserver gc-3411-web-01 ubuntu@35.231.120.54:80 check\n\tserver gc-3411-web-02 ubuntu@34.139.69.101:80 check"
 sudo echo -e STR | sudo tee -a $FILE
 sudo service haproxy restart
