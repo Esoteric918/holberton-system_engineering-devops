@@ -3,7 +3,7 @@
 sudo apt-get -y update
 sudo apt-get -y  install nginx
 sudo service nginx start
-HDR="\\n\tadd_header X-Served-By \$HOSTNAME;\n"
+HDR="\tadd_header X-Served-By $HOSTNAME;\n"
 echo 'Hello World' | sudo tee /var/www/html/index.html
 sudo ufw allow nginx
 SRC="\tlocation / {"
