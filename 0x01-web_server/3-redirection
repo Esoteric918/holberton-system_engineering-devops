@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # redirection
 sudo apt-get -y update
+sudo apt-get -y upgrade
 sudo apt-get -y  install nginx
-sudo ufw allow nginx
 sudo service nginx start
 echo 'Hello World' | sudo tee /var/www/html/index.html
+
 SRC="\tlocation / {"
-REDIC="\tlocation /redirect_me {\n\t\treturn 301 \$scheme://https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n\n\tlocation / {"
-sudo sed -i"s@$SRC@$REDIC@" /etc/nginx/sites-available/default
+REDIC="\tlocation /redirect_me {\n\t\treturn 301 \$scheme://https://https://www.youtube.com/watch?v=4UDbo1w1KP4;\n\t}\n\n\tlocation / {"
+sudo sed -i "s@$SRC@$REDIC@" /etc/nginx/sites-available/default
 sudo service nginx restart
