@@ -6,7 +6,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y install haproxy
 
 
-STR= "\nfrontend http\n\tbind *:80 mode http\n\tstats uri /haproxy?stats\n\tdefault_backend custom_backend\n\nbackend custom_backend\tbalance roundrobin\n\tserver gc-3411-web-01 35.231.120.54:80 check\n\tserver gc-3411-web-02 34.139.69.101:80 check"
+STR= "\nfrontend http\n\tbind *:80 mode http\n\tstats uri /haproxy?stats\n\tdefault_backend custom_backend\n\nbackend custom_backend\tbalance roundrobin\n\tserver 3411-web-01 35.229.33.83:80 check\n\tserver 3411-web-35.185.60.149:80 check"
 
 sudo echo -e $STR | sudo tee -a /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
