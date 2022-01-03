@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# displays domain information
+
+dom=$1
+arr=('www' 'lb-01' 'web-01' 'web-02')
+
+if [ $# -eq 2 ] ; then
+     subdom=$2
+    echo -n "The subdomain $2"
+    dig $2.$1 | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a " $4 " record and points to " $5}'
+else
+    for i in "${arr[@]}" ; do
+        echo -n "The subdomain $i"
+        dig $i.$1 | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a " $4 " record and points to " $5}'
+    done
+fi
