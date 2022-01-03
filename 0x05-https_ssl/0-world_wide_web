@@ -1,21 +1,23 @@
 #!/usr/bin/env bash
-# display info about subdomains testing ip
-function parse {
-	dest=$(dig "$1.$2" | grep -A1 'ANSWER SECTION:' | tail -1 | rev | awk -F"\t" '{ print $1 }' | rev)
-	rec=$(dig "$1.$2" | grep -A1 'ANSWER SECTION:' | tail -1 | rev | awk -F"\t" '{ print $2 }' | rev)
+# configure domain zone
+splitter () {
+    TEMP=$(dig "$SUBD" | grep -A1 'ANSWER SECTION:' | tail -1)
+    A=$(echo "$TEMP" | awk '{ print $4 }')
+    B=$(echo "$TEMP" | awk '{ print $5 }')
 }
 
-if [[ -z "$2" ]]
+if [ $# -eq 2 ]
 then
-	parse www "$1"
-	echo "The subdomain www is a $rec record and points to $dest"
-	parse lb-01 "$1"
-	echo "The subdomain lb-01 is a $rec record and points to $dest"
-	parse web-01 "$1"
-	echo "The subdomain web-01 is a $rec record and points to $dest"
-	parse web-02 "$1"
-	echo "The subdomain web-02 is a $rec record and points to $dest"
-else
-	parse "$2" "$1"
-	echo "The subdomain $2 is a $rec record and points to $dest"
+    SUBD="$2.$1"
+    splitter "$SUBD"
+    echo "The subdomain $2 is a $A record and points to $B"
+elif [ $# -eq 1 ]
+then
+    ARR=('www' 'lb-01' 'web-01' 'web-02')
+    for i in "${ARR[@]}"
+    do
+        SUBD="$i.$1"
+        splitter "$SUBD"
+        echo "The subdomain $i is a $A record and points to $B"
+    done
 fi
