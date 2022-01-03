@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# display info about subdomains
+# display info about subdomains testing ip
 function parse {
 	dest=$(dig "$1.$2" | grep -A1 'ANSWER SECTION:' | tail -1 | rev | awk -F"\t" '{ print $1 }' | rev)
 	rec=$(dig "$1.$2" | grep -A1 'ANSWER SECTION:' | tail -1 | rev | awk -F"\t" '{ print $2 }' | rev)
