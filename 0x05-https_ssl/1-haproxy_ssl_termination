@@ -49,8 +49,8 @@ frontend http_web
 
 backend custom_backend
         balance roundrobin
-        server web-35.229.33.83:80 check
-        server web-35.185.60.149:80 check
+        server web-01-35.229.33.83:80 check
+        server web-02-35.185.60.149:80 check
 # LE Backend
 backend letsencrypt-backend
     server letsencrypt 127.0.0.1:888
