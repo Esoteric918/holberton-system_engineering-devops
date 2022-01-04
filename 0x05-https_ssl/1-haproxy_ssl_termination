@@ -33,3 +33,24 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
+
+frontend http_web
+    bind *:80
+    stats uri /haproxy?stats
+    default_backend custom_backend
+
+  # This is our new config that listens on port 443 for SSL connections
+    bind *:443 ssl crt /etc/ssl/www.esoteric918.tech/www.esoteric918.tech.pem
+    # Test URI to see if its a letsencrypt request
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
+
+    default_backend custom_backend
+
+backend custom_backend
+        balance roundrobin
+        server web-35.229.33.83:80 check
+        server web-35.185.60.149:80 check
+# LE Backend
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:888
