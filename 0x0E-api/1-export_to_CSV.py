@@ -8,27 +8,26 @@ import sys
 if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1].isdigit():
         usr = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                           .format(sys.argv[1])
-                           ).json()
+                           .format(sys.argv[1])).json()
+
         todos = requests.get(
             "https://jsonplaceholder.typicode.com/todos/?userId={}"
-            .format(sys.argv[1])
-        ).json()
+            .format(sys.argv[1])).json()
 
         print('Employee {} is done with tasks({}/{}):'.format(
             usr.get("name"),
             len([x for x in todos if x.get("completed")]),
-            len(todos)
-        ))
+            len(todos)))
+
         print('\n'.join('\t {}'.format(x.get("title"))
               for x in todos if x.get('completed')))
 
-        with open('{}.csv'.format(sys.argv[1]), 'w') as f:
-            csv_inp = csv.writer(f, quoting=csv.QUOTE_ALL)
-            for td in todos:
-                csv_inp.writerow([
+        # write to csv file, "ID","NAME","Task completed","Task title"
+        with open('{}.csv'.format(sys.argv[1]), 'w') as fd:
+            csv_input = csv.writer(fd, quoting=csv.QUOTE_ALL)
+            for tds in todos:
+                csv_input.writerow([
                     sys.argv[1],
                     usr.get('username'),
-                    td.get('completed'),
-                    td.get('title')
-                ])
+                    tds.get('completed'),
+                    tds.get('title')])
