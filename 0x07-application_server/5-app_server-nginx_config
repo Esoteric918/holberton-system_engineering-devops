@@ -45,7 +45,7 @@ server {
 
         server_name _;
 
-        add_header X-Served-By 3411-web-01;
+        add_header X-Served-By $HOSTNAME;
 
         error_page 404 /error404.html;
 
