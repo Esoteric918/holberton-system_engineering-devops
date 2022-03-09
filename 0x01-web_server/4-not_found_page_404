@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-# Installs nginx
+# setup nginx server with html file + 404
 sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y install nginx
-sudo service nginx start
-echo 'Hello World!' | sudo tee /var/www/html/index.html
-
-sudo touch /var/www/html/error404.html
-sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/error404.html
-
-search="\tlocation / {"
-Replace="\terror_page 404 /error404.html;\n\n\tlocation /redirect_me {\n\t\treturn 301 \$scheme://https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n\n\tlocation / {"
-sudo sed -i "s@^$search@$Replace@" /etc/nginx/sites-available/default
+sudo apt-get install -y nginx
+sudo ufw allow 'Nginx HTTP'
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
+sudo sh -c "echo Ceci n\'est pas une page > /var/www/html/error404.html"
+target="^\tlocation / {"
+replace="\tlocation /redirect_me {\n\t\treturn 301 \$scheme://youtu.be/A311CnTjfos;\n\t}\n\n\tlocation / {"
+sudo sed -i "s@$target@$replace@" /etc/nginx/sites-available/default
+replace="\terror_page 404 /error404.html;\n\n\tlocation / {"
+sudo sed -i "s@$target@$replace@" /etc/nginx/sites-available/default
 sudo service nginx restart
