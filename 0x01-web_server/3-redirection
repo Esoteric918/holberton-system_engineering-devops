@@ -4,7 +4,7 @@ sudo apt-get -y update
 sudo apt-get -y  install nginx
 sudo ufw allow 'Nginx HTTP'
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
-SRC="\tlocation / {"
+SRC="^\tlocation / {"
 REDIC="\tlocation /redirect_me {\n\t\treturn 301 \$scheme://youtu.be/A311CnTjfos;\n\t}\n\n\tlocation / {"
 sudo sed -i "s@$SRC@$REDIC@" /etc/nginx/sites-available/default
 sudo service nginx restart
