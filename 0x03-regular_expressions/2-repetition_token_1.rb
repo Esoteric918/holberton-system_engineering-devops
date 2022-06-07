@@ -1,1 +1,1 @@
-puts AGRV[0].scan(/hbt{0,1}n/).join
+puts AGRV[0].scan(/hb{0,1}tn/).join
